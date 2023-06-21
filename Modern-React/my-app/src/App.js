@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <NavBar />
       <div className='content'>
-        <Home />
-        <Home1 />
+        {/* <Home />
+        <Home1 /> */}
         <Home2 />
 
       </div>

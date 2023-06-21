@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import BlogList from './BlogList.js';
 
-function Home1() {
+function Home2() {
 
     const [blog, setBlogs] = useState(null);
 
@@ -23,4 +23,4 @@ function Home1() {
     )
 }
 
-export default Home1
+export default Home2
