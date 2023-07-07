@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-// import { Navigate } from 'react-router-dom'
 import axios from 'axios'
-// import { Navigate } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+// import { useAdminLoginMutation } from '../services/PostApi.js'
 
 function AdminLogin() {
     const navigate = useNavigate()
@@ -16,6 +15,17 @@ function AdminLogin() {
 
         setNewAdmin([...allAdmin, newAdmin])
 
+
+        // const [data] = useAdminLoginMutation();
+        // localStorage.setItem('token', JSON.stringify(data.token))
+        // console.log(localStorage.getItem('token'))
+
+        // if (data.status === "success") {
+        //     navigate('/adminDashboard')
+        // } else {
+        //     alert(data.msg);
+        // }
+
         const login = async () => {
             const response = await axios.post("http://localhost:8080/api/adminLogin", {
                 email: adminEmail,
@@ -25,11 +35,14 @@ function AdminLogin() {
             console.log(data)
             localStorage.setItem('token', JSON.stringify(data.token))
             console.log(localStorage.getItem('token'))
+
             if (data.status === "success") {
                 navigate('/adminDashboard')
             } else {
                 alert(data.msg);
             }
+
+
         }
 
         login();
@@ -68,7 +81,7 @@ function AdminLogin() {
 
             </div>
 
-            {/* <Navigate to='/adminDashboard' replace={true} /> */}
+
 
             <button
                 type='submit'

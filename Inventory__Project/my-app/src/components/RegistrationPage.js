@@ -16,18 +16,23 @@ function RegistrationPage() {
         const register = async () => {
             try {
 
-                const bearer = 'Bearer' + JSON.parse(localStorage.getItem('token'))
-                const response = await axios.post("http://localhost:8080/api/userSignup", {
-                    headers: {
-                        'authorization': bearer
-                    }
-                }, {
+                let token = localStorage.getItem('token');
+                // console.log(data, "fgh")
+                // console.log(localStorage.getItem('token'))
+                const headers = {
+                    'authorization': `Bearer ${token}`,
+                    Accept: 'application/json'
+
+                }; // auth header with bearer token
+
+                const response = await axios.post("http://localhost:8080/api/userSignup", headers, {
                     email: usernameReg,
                     password: passwordReg,
                 })
+                console.log(response)
                 const data = await response.data;
-                console.log(data, "fgh")
-                console.log(localStorage.getItem('token'))
+                console.log(data)
+
 
             } catch (error) {
                 console.log(error)
